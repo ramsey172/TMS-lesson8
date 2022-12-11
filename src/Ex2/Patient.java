@@ -1,18 +1,18 @@
 package Ex2;
 
 public class Patient extends Human{
-    TreatmentPlan treatmentPlan;
-    Doctor doctor;
+    private TreatmentPlan treatmentPlan;
 
     Patient(TreatmentPlan treatmentPlan){
         this.treatmentPlan = treatmentPlan;
-        if(treatmentPlan.code == 1){
-            this.doctor = new Surgeon();
-        }else if(treatmentPlan.code == 2){
-            this.doctor = new Dentist();
-        }else{
-            this.doctor = new Therapist();
-        }
+    }
 
+    public Doctor getDoctor(){
+        if(treatmentPlan.code == 1){
+            return new Surgeon();
+        }else if(treatmentPlan.code == 2){
+            return new Dentist();
+        }
+        return new Therapist();
     }
 }
